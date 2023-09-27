@@ -5,19 +5,17 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # Sem cor
 
-# Verifica se o diretório de saída existe, se não, cria-o
-mkdir -p arquivos_formatados
-
 # Função para formatar um arquivo de entrada, substituindo tabulações por barras
 formatar_id() {
   local arquivo_entrada="$1"
   local nome_arquivo_sem_extensao=$(basename "$arquivo_entrada" | cut -f 1 -d '_')
   local nome_arquivo_sem_extensao=$(basename "$nome_arquivo_sem_extensao" | cut -f 1 -d '.')
-  local arquivo_saida="arquivos_formatados/${nome_arquivo_sem_extensao}_formatado.txt"
+  local arquivo_saida="${nome_arquivo_sem_extensao}_formatado.txt"
   
   if [ -f "$arquivo_entrada" ]; then
     # Realiza a substituição usando o sed
     sed 's/\t/\//g' "$arquivo_entrada" > "$arquivo_saida"
+    sed -i '/\/\//d' "$arquivo_saida"
     echo -e "${GREEN}ID formatado com sucesso e salvo em '$arquivo_saida'${NC}"
   else
     echo -e "${RED}O arquivo '$arquivo_entrada' não existe.${NC}"
@@ -29,7 +27,7 @@ formatar_telnet() {
   local arquivo_entrada="$1"
   local nome_arquivo_sem_extensao=$(basename "$arquivo_entrada" | cut -f 1 -d '_')
   local nome_arquivo_sem_extensao=$(basename "$nome_arquivo_sem_extensao" | cut -f 1 -d '.')
-  local arquivo_saida="arquivos_formatados/${nome_arquivo_sem_extensao}_telnet.txt"
+  local arquivo_saida="${nome_arquivo_sem_extensao}_telnet.txt"
   
   if [ -f "$arquivo_entrada" ]; then
     # Realiza a substituição usando o sed
