@@ -38,8 +38,16 @@ formatar_telnet() {
   fi
 }
 
+formatar_sinal() {
+  local arquivo_entrada="$1"
+  local nome_arquivo_sem_extensao=$(basename "$arquivo_entrada" | cut -f 1 -d '_')
+  local nome_arquivo_sem_extensao=$(basename "$nome_arquivo_sem_extensao" | cut -f 1 -d '.')
+  local arquivo_saida="${nome_arquivo_sem_extensao}_sinal.txt"
+  sed 's/RECV POWER   : //g; s/ (Dbm)//g; s/(Dbm)//g; s/\t//g' $arquivo_entrada > $arquivo_saida
+}
+
 # Verifica as opções de linha de comando
-while getopts "i:t:" opcao; do
+while getopts "i:t:s:" opcao; do
   case "$opcao" in
     i)
       arquivo_input="$OPTARG"
@@ -48,6 +56,10 @@ while getopts "i:t:" opcao; do
     t)
       arquivo_input="$OPTARG"
       formatar_telnet "$arquivo_input"
+      ;;
+    s)
+      arquivo_input="$OPTARG"
+      formatar_sinal "$arquivo_input"
       ;;
     *)
       echo -e "${RED}Uso: $0 [-i arquivo] [-t arquivo]${NC}"
