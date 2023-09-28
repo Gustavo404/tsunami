@@ -17,7 +17,7 @@ Onde:
 
 > Se nenhum argumento de linha de comando for fornecido, o script exibirá uma mensagem de ajuda.
 
-# Formatação "ID"
+## Formatação "ID"
 
 A formatação "ID" substitui tabulações por barras e remove linhas em que ocorram duas barras consecutivas ("//").
 
@@ -26,7 +26,7 @@ Exemplo de uso:
 ./tsunami.sh -i arquivo_de_entrada.txt
 ```
 
-# Formatação "Telnet"
+## Formatação "Telnet"
 A formatação "Telnet" realiza uma substituição específica no arquivo de entrada usando expressões regulares. Consulte o código do script para obter detalhes específicos da substituição.
 
 Exemplo de uso:
@@ -34,7 +34,7 @@ Exemplo de uso:
 ./tsunami.sh -t arquivo_de_entrada.txt
 ```
 
-# Cores de Saída
+## Cores de Saída
 O script usa cores para destacar a saída:
 
 - Texto em verde indica que a operação foi bem-sucedida.
