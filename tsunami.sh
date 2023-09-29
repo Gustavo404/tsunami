@@ -17,8 +17,10 @@ formatar_id() {
     sed 's/\t/\//g' "$arquivo_entrada" > "$arquivo_saida"
     sed -i '/\/\//d' "$arquivo_saida"
     echo -e "${GREEN}ID formatado com sucesso e salvo em '$arquivo_saida'${NC}"
+    exit 0
   else
     echo -e "${RED}O arquivo '$arquivo_entrada' não existe.${NC}"
+    exit 1
   fi
 }
 
@@ -33,8 +35,10 @@ formatar_telnet() {
     # Realiza a substituição usando o sed
     sed -E 's/([0-9]+)\/([0-9]+)\/([0-9]+)/show optic_module slot \1 pon \2 onu \3/; t; d' "$arquivo_entrada" > "$arquivo_saida"
     echo -e "${GREEN}Telnet formatado com sucesso e salvo em '$arquivo_saida'${NC}"
+    exit 0
   else
     echo -e "${RED}O arquivo '$arquivo_entrada' não existe.${NC}"
+    exit 1
   fi
 }
 
