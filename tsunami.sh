@@ -14,10 +14,9 @@ formatar_id() {
   
   if [ -f "$arquivo_entrada" ]; then
     # Realiza a substituição usando o sed
-    sed 's/\t/\//g' "$arquivo_entrada" > "$arquivo_saida"
-    sed -i '/\/\//d' "$arquivo_saida"
+    sed "s/\t/\//g" "$arquivo_entrada" > "$arquivo_saida"
+    sed -i "/\/\//d" "$arquivo_saida"
     echo -e "${GREEN}ID formatado com sucesso e salvo em '$arquivo_saida'${NC}"
-    exit 0
   else
     echo -e "${RED}O arquivo '$arquivo_entrada' não existe.${NC}"
     exit 1
@@ -33,21 +32,29 @@ formatar_telnet() {
   
   if [ -f "$arquivo_entrada" ]; then
     # Realiza a substituição usando o sed
-    sed -E 's/([0-9]+)\/([0-9]+)\/([0-9]+)/show optic_module slot \1 pon \2 onu \3/; t; d' "$arquivo_entrada" > "$arquivo_saida"
+    sed -E "s/([0-9]+)\/([0-9]+)\/([0-9]+)/show optic_module slot \1 pon \2 onu \3/; t; d" "$arquivo_entrada" > "$arquivo_saida"
     echo -e "${GREEN}Telnet formatado com sucesso e salvo em '$arquivo_saida'${NC}"
-    exit 0
   else
     echo -e "${RED}O arquivo '$arquivo_entrada' não existe.${NC}"
     exit 1
   fi
 }
 
+# Função para formatar um arquivo de entrada, removendo informações desnecessárias
 formatar_sinal() {
   local arquivo_entrada="$1"
   local nome_arquivo_sem_extensao=$(basename "$arquivo_entrada" | cut -f 1 -d '_')
   local nome_arquivo_sem_extensao=$(basename "$nome_arquivo_sem_extensao" | cut -f 1 -d '.')
   local arquivo_saida="${nome_arquivo_sem_extensao}_sinal.txt"
-  sed 's/RECV POWER   : //g; s/ (Dbm)//g; s/(Dbm)//g; s/\t//g' $arquivo_entrada > $arquivo_saida
+  
+  if [ -f "$arquivo_entrada" ]; then
+    # Realiza a substituição usando o sed
+    sed "s/RECV POWER   : //g; s/ (Dbm)//g; s/(Dbm)//g; s/\t//g" "$arquivo_entrada" > "$arquivo_saida"
+    echo -e "${GREEN}Sinal formatado com sucesso e salvo em '$arquivo_saida'${NC}"
+  else
+    echo -e "${RED}O arquivo '$arquivo_entrada' não existe.${NC}"
+    exit 1
+  fi
 }
 
 # Verifica as opções de linha de comando
@@ -66,7 +73,7 @@ while getopts "i:t:s:" opcao; do
       formatar_sinal "$arquivo_input"
       ;;
     *)
-      echo -e "${RED}Uso: $0 [-i arquivo] [-t arquivo]${NC}"
+      echo -e "${RED}Uso: $0 [-i arquivo] [-t arquivo] [-s arquivo]${NC}"
       exit 1
       ;;
   esac
@@ -74,5 +81,5 @@ done
 
 # Se nenhum argumento de linha de comando for fornecido, exiba uma mensagem de ajuda
 if [ $# -eq 0 ]; then
-  echo -e "${RED}Uso: $0 [-i arquivo] [-t arquivo]${NC}"
+  echo -e "${RED}Uso: $0 [-i arquivo] [-t arquivo] [-s arquivo]${NC}"
 fi
