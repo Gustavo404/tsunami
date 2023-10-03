@@ -7,50 +7,83 @@
 ## Visão geral
 Este é um script Bash que permite formatar arquivos de entrada de duas maneiras diferentes: formato "ID" e formato "Telnet". O script substituirá tabulações por barras e realizará outras operações de formatação, dependendo da opção escolhida.
 
-<br>
+## **Uso**
 
-## Uso
+Para utilizar o Tsunami, você pode executá-lo a partir da linha de comando com as seguintes opções:
 
-Para executar o script, use o seguinte formato:
-
-```bash
-./script.sh [-i arquivo] [-t arquivo]
-```
-
-Onde:
-
-- -i arquivo: Formata o arquivo como "ID".
-- -t arquivo: Formata o arquivo como "Telnet".
-
-> Se nenhum argumento de linha de comando for fornecido, o script exibirá uma mensagem de ajuda.
-
-### Formatação "ID"
-
-A formatação "ID" substitui tabulações por barras e remove linhas em que ocorram duas barras consecutivas ("//").
+- **`i arquivo`**: Formata o arquivo de entrada, substituindo tabulações por barras.
+- **`t arquivo`**: Formata o arquivo de entrada de acordo com a função Telnet.
+- **`s arquivo`**: Formata o arquivo de entrada, removendo informações desnecessárias.
 
 Exemplo de uso:
+
 ```bash
-./tsunami.sh -i arquivo_de_entrada.txt
+bash tsunami.sh [-i] [-t] [-s] arquivo_entrada.txt
 ```
 
-### Formatação "Telnet"
-A formatação "Telnet" realiza uma substituição específica no arquivo de entrada usando expressões regulares. Consulte o código do script para obter detalhes específicos da substituição.
+## **Funções Principais**
 
-Exemplo de uso:
-```bash
-./tsunami.sh -t arquivo_de_entrada.txt
-```
+### **`$nome_arquivo_sem_extensao`**
 
-<br>
+Este é um bloco de cada função que delimita o nome do arquivo de entrada para definir como deve se chamar o arquivo de saida. Veja como funciona:
 
-## Cores de Saída
-O script usa cores para destacar a saída:
+1. captura o nome do arquivo de entrada em **`$1`** e armazena em **`$arquivo_entrada`**
+2. utiliza o *basename* para delimitar **`$arquivo_entrada`** no primeiro “_”;
+3. usa o ********basename******** novamente para delimitar **`$arquivo_entrada`**  no primeiro “.”
+4. o nome delimitado vai para **`$nome_arquivo_sem_extensao`**
 
-- Texto em verde indica que a operação foi bem-sucedida.
-- Texto em vermelho indica um erro ou aviso.
-> Lembre-se de fornecer o caminho correto para o arquivo de entrada desejado ao usar o script.
+### **`formatar_id()`**
 
-<br>
+Esta função formata um arquivo de entrada, substituindo tabulações por barras. Ela realiza as seguintes etapas:
+
+1. Extrai o nome do arquivo sem extensão.
+2. Cria um arquivo de saída com o nome formatado.
+3. Substitui tabulações por barras usando o comando **`sed`**.
+4. Remove linhas duplicadas com barras consecutivas.
+5. Exibe uma mensagem de sucesso ou erro.
+
+### **`formatar_telnet()`**
+
+Esta função formata um arquivo de entrada de acordo com a função Telnet (substitua com sua lógica). Ela realiza as seguintes etapas:
+
+1. Extrai o nome do arquivo sem extensão.
+2. Cria um arquivo de saída com o nome formatado.
+3. Utiliza expressões regulares (**`sed -E`**) para realizar a formatação de acordo com a lógica desejada.
+4. Exibe uma mensagem de sucesso ou erro.
+
+### **`formatar_sinal()`**
+
+Esta função formata um arquivo de entrada, removendo informações desnecessárias. Ela realiza as seguintes etapas:
+
+1. Extrai o nome do arquivo sem extensão.
+2. Cria um arquivo de saída com o nome formatado.
+3. Utiliza o comando **`sed`** para substituir e remover partes específicas do texto.
+4. Exibe uma mensagem de sucesso ou erro.
+
+## **Exemplos de Uso**
+
+Para ilustrar o uso do Tsunami, aqui estão alguns exemplos:
+
+1. Formatar um arquivo para o padrão de ID (1/2/3):
+    
+    ```bash
+    bash tsunami.sh -i arquivo_id.txt
+    ```
+    
+2. Formatar um arquivo para comandos usando a lógica Telnet:
+    
+    ```bash
+    bash tsunami.sh -t arquivo.txt
+    ```
+    
+3. Formatar um arquivo extraindo apenas o sinal:
+    
+    ```bash
+    bash tsunami.sh -s arquivo.txt
+    ```
+    
+
+Se nenhum argumento de linha de comando for fornecido, o Tsunami exibirá uma mensagem de ajuda com as opções disponíveis.
 
 ## Feedback, Perguntas e Relatórios de Problemas
 
@@ -61,7 +94,6 @@ Se quiser contribuir para a melhoria do projeto Tsuami, sugestões, perguntas ou
 Se você tiver sugestões ou ideias para melhorar o projeto Tsuami, sinta-se à vontade para compartilhá-las. Você pode fazer isso das seguintes maneiras:
 
 - **Pull Request (PR)**: Se você deseja contribuir diretamente com código, abra um Pull Request com suas alterações propostas. Analisaremos suas contribuições e trabalharemos juntos para incorporá-las ao projeto.
-
 - **Issues**: Use as Issues para sugerir melhorias ou novos recursos. Descreva detalhadamente sua ideia para que eu possa entender e discutir como implementá-la.
 
 ### Relatórios de Problemas (Bugs)
@@ -69,7 +101,6 @@ Se você tiver sugestões ou ideias para melhorar o projeto Tsuami, sinta-se à 
 Encontrou um bug ou problema em Tsuami? Você pode relatar problemas das seguintes maneiras:
 
 - **Issues**: Abra uma Issue descrevendo o problema. Inclua informações relevantes, como o ambiente em que o erro ocorreu, etapas para reproduzi-lo e qualquer mensagem de erro que tenha recebido.
-
 - **Site**: Você também pode reportar bugs em [gustavo404.com/sobre](https://www.gustavo404.com/sobre). Use os meios de contato para enviar detalhes sobre o problema encontrado.
 
 ### Perguntas e Suporte
@@ -77,9 +108,7 @@ Encontrou um bug ou problema em Tsuami? Você pode relatar problemas das seguint
 Se você tiver alguma pergunta sobre como usar Tsuami ou precisar de suporte, Você pode fazer o seguinte:
 
 - **Issues Existentes**: Verifique se já existe uma Issue relacionada à sua pergunta. Talvez a resposta que você procura já esteja lá.
-
 - **Novas Issues**: Se sua pergunta não estiver coberta nas Issues existentes, sinta-se à vontade para criar uma nova Issue com sua pergunta. Ficarei feliz em responder e ajudar.
-
 - **Contato pelo Site**: Você também pode entrar em contato conosco através do site [gustavo404.com/sobre](https://www.gustavo404.com/sobre). Utilize os meios de contato para enviar suas perguntas ou dúvidas.
 
 Agradeço por sua contribuição, feedback e envolvimento na comunidade do projeto Tsuami.
