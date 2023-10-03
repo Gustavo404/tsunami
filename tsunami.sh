@@ -28,7 +28,7 @@ formatar_telnet() {
   local arquivo_entrada="$1"
   local nome_arquivo_sem_extensao=$(basename "$arquivo_entrada" | cut -f 1 -d '_')
   local nome_arquivo_sem_extensao=$(basename "$nome_arquivo_sem_extensao" | cut -f 1 -d '.')
-  local arquivo_saida="${nome_arquivo_sem_extensao}_telnet.txt"
+  local arquivo_saida="${nome_arquivo_sem_extensao}_comandos.txt"
   
   if [ -f "$arquivo_entrada" ]; then
     # Realiza a substituição usando o sed
