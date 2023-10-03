@@ -1,7 +1,7 @@
-# Tsuami
+# Tsunami
 [![AWK 1.3.4](https://img.shields.io/badge/AWK-1.3.4-red)](https://packages.debian.org/stable/awk) 
 [![ShellScript Bash](https://img.shields.io/badge/ShellScript-Bash-blue)](https://www.gnu.org/software/bash/)
-[![Licença](https://img.shields.io/badge/Licen%C3%A7a-GPL%202.0-yellow)](https://github.com/gustavo404/Tsuami/blob/main/LICENSE)
+[![Licença](https://img.shields.io/badge/Licen%C3%A7a-GPL%202.0-yellow)](https://github.com/gustavo404/Tsunami/blob/main/LICENSE)
 [![Youtube](https://img.shields.io/badge/Youtube-Gustavo404-red.svg)](https://youtube.com/gustavo404)
 
 ## Visão geral
@@ -87,32 +87,32 @@ Se nenhum argumento de linha de comando for fornecido, o Tsunami exibirá uma me
 
 ## Feedback, Perguntas e Relatórios de Problemas
 
-Se quiser contribuir para a melhoria do projeto Tsuami, sugestões, perguntas ou encontrar algum problema, estou aqui para ajudar.
+Se quiser contribuir para a melhoria do projeto Tsunami, sugestões, perguntas ou encontrar algum problema, estou aqui para ajudar.
 
 ### Sugestões e Melhorias
 
-Se você tiver sugestões ou ideias para melhorar o projeto Tsuami, sinta-se à vontade para compartilhá-las. Você pode fazer isso das seguintes maneiras:
+Se você tiver sugestões ou ideias para melhorar o projeto Tsunami, sinta-se à vontade para compartilhá-las. Você pode fazer isso das seguintes maneiras:
 
 - **Pull Request (PR)**: Se você deseja contribuir diretamente com código, abra um Pull Request com suas alterações propostas. Analisaremos suas contribuições e trabalharemos juntos para incorporá-las ao projeto.
 - **Issues**: Use as Issues para sugerir melhorias ou novos recursos. Descreva detalhadamente sua ideia para que eu possa entender e discutir como implementá-la.
 
 ### Relatórios de Problemas (Bugs)
 
-Encontrou um bug ou problema em Tsuami? Você pode relatar problemas das seguintes maneiras:
+Encontrou um bug ou problema em Tsunami? Você pode relatar problemas das seguintes maneiras:
 
 - **Issues**: Abra uma Issue descrevendo o problema. Inclua informações relevantes, como o ambiente em que o erro ocorreu, etapas para reproduzi-lo e qualquer mensagem de erro que tenha recebido.
 - **Site**: Você também pode reportar bugs em [gustavo404.com/sobre](https://www.gustavo404.com/sobre). Use os meios de contato para enviar detalhes sobre o problema encontrado.
 
 ### Perguntas e Suporte
 
-Se você tiver alguma pergunta sobre como usar Tsuami ou precisar de suporte, Você pode fazer o seguinte:
+Se você tiver alguma pergunta sobre como usar Tsunami ou precisar de suporte, Você pode fazer o seguinte:
 
 - **Issues Existentes**: Verifique se já existe uma Issue relacionada à sua pergunta. Talvez a resposta que você procura já esteja lá.
 - **Novas Issues**: Se sua pergunta não estiver coberta nas Issues existentes, sinta-se à vontade para criar uma nova Issue com sua pergunta. Ficarei feliz em responder e ajudar.
 - **Contato pelo Site**: Você também pode entrar em contato conosco através do site [gustavo404.com/sobre](https://www.gustavo404.com/sobre). Utilize os meios de contato para enviar suas perguntas ou dúvidas.
 
-Agradeço por sua contribuição, feedback e envolvimento na comunidade do projeto Tsuami.
+Agradeço por sua contribuição, feedback e envolvimento na comunidade do projeto Tsunami.
 
 ## Licença
 
-O código-fonte do projeto Tsuami é disponibilizado sob os termos da Licença Pública Geral GNU versão 2.0 (GPL 2.0). Isso significa que você é livre para usar, modificar e distribuir o código de acordo com os termos da GPL 2.0. Certifique-se de ler e entender os detalhes da licença antes de utilizar o projeto.
+O código-fonte do projeto Tsunami é disponibilizado sob os termos da Licença Pública Geral GNU versão 2.0 (GPL 2.0). Isso significa que você é livre para usar, modificar e distribuir o código de acordo com os termos da GPL 2.0. Certifique-se de ler e entender os detalhes da licença antes de utilizar o projeto.
